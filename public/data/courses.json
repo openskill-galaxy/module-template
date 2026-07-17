@@ -1,35 +1,53 @@
 [
   {
-    "id": "course-intro",
-    "slug": "introduction",
-    "title": "入门导论",
-    "summary": "模块概览、学习目标与环境准备，帮助你快速了解本模块的全貌并搭建学习环境。",
+    "id": "mod-template-c-1",
+    "title": "模块模板 架构原理与初始化",
+    "slug": "course-1",
+    "summary": "深度探索 模块模板 的设计理念、运行架构以及初始化配置引导。",
+    "order": 1,
     "difficulty": "easy",
-    "tags": ["入门", "概览"],
-    "estimatedHours": 4,
-    "lessons": ["lesson-what", "lesson-setup", "lesson-goals"],
-    "order": 1
+    "estimatedHours": 7,
+    "lessons": [
+      "mod-template-l-1",
+      "mod-template-l-2"
+    ],
+    "tags": [
+      "模板",
+      "演示"
+    ]
   },
   {
-    "id": "course-core",
-    "slug": "core-concepts",
-    "title": "核心概念",
-    "summary": "深入理解本模块的核心概念、基本原理与关键定义，为后续实践打下坚实基础。",
-    "difficulty": "medium",
-    "tags": ["核心", "原理"],
-    "estimatedHours": 8,
-    "lessons": ["lesson-basics", "lesson-principles", "lesson-definitions", "lesson-examples"],
-    "order": 2
+    "id": "mod-template-c-2",
+    "title": "模块模板 核心机制与开发实战",
+    "slug": "course-2",
+    "summary": "掌握 模块模板 的核心组件、API 接口调用以及本地开发调试。",
+    "order": 2,
+    "difficulty": "easy",
+    "estimatedHours": 7,
+    "lessons": [
+      "mod-template-l-3",
+      "mod-template-l-4"
+    ],
+    "tags": [
+      "模板",
+      "演示"
+    ]
   },
   {
-    "id": "course-advanced",
-    "slug": "advanced-topics",
-    "title": "进阶主题",
-    "summary": "综合运用核心概念解决复杂问题，掌握进阶技巧与最佳实践。",
-    "difficulty": "hard",
-    "tags": ["进阶", "综合"],
-    "estimatedHours": 8,
-    "lessons": ["lesson-patterns", "lesson-optimization", "lesson-integration"],
-    "order": 3
+    "id": "mod-template-c-3",
+    "title": "模块模板 高级优化与生产部署",
+    "slug": "course-3",
+    "summary": "学习如何进行系统性能监控调优、高可用集群部署与数据存储。",
+    "order": 3,
+    "difficulty": "easy",
+    "estimatedHours": 7,
+    "lessons": [
+      "mod-template-l-5",
+      "mod-template-l-6"
+    ],
+    "tags": [
+      "模板",
+      "演示"
+    ]
   }
 ]
