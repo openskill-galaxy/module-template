@@ -1,22 +1,33 @@
 [
   {
-    "id": "exam-basic",
-    "slug": "basic-test",
-    "title": "基础测试",
-    "summary": "覆盖模块概览、数据模型与设计原则的基础测试。",
+    "id": "mod-template-exam-1",
+    "slug": "final-exam",
+    "title": "模块模板 核心期末综合自测",
+    "summary": "全面检验您对 模块模板 所有阶段知识体系的掌握程度。",
     "difficulty": "easy",
-    "questionIds": ["q-1", "q-2", "q-3", "q-4", "q-5"],
-    "timeLimitMinutes": 10,
+    "questionIds": [
+      "mod-template-q-1",
+      "mod-template-q-2",
+      "mod-template-q-3",
+      "mod-template-q-4",
+      "mod-template-q-5",
+      "mod-template-q-6"
+    ],
+    "timeLimitMinutes": 60,
     "passingScore": 60
   },
   {
-    "id": "exam-comprehensive",
-    "slug": "comprehensive-exam",
-    "title": "综合考试",
-    "summary": "覆盖全部知识点的综合考试，包含多种题型。",
-    "difficulty": "hard",
-    "questionIds": ["q-1", "q-2", "q-3", "q-4", "q-5", "q-6", "q-7", "q-8", "q-9", "q-10"],
-    "timeLimitMinutes": 20,
-    "passingScore": 70
+    "id": "mod-template-exam-2",
+    "slug": "basic-exam",
+    "title": "模块模板 基础概念快速评估",
+    "summary": "针对核心基础概念的摸底评估，题目精炼。",
+    "difficulty": "easy",
+    "questionIds": [
+      "mod-template-q-1",
+      "mod-template-q-2",
+      "mod-template-q-3"
+    ],
+    "timeLimitMinutes": 30,
+    "passingScore": 60
   }
 ]
