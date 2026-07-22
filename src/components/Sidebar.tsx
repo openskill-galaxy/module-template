@@ -32,7 +32,7 @@ const groups: { title: string; items: { to: string; label: string; end?: boolean
 
 export default function Sidebar() {
   return (
-    <aside className="hidden md:block w-56 shrink-0 border-r border-white/10 bg-ink-900/40">
+    <aside className="hidden md:block w-56 shrink-0 border-r border-white/10 bg-slate-950/40">
       <nav className="sticky top-16 max-h-[calc(100vh-4rem)] overflow-y-auto p-3 space-y-5">
         {groups.map((g) => (
           <div key={g.title}>
