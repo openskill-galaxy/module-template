@@ -3,216 +3,214 @@
     "id": "mod-template-q-1",
     "slug": "question-course-1-2",
     "type": "single",
-    "stem": "在学习 [模块模板] 的过程里，关于“模块模板 环境依赖搭建与运行机制”的核心考点，以下表述最为准确的是？",
+    "stem": "在同源多模块部署（如 `https://openskill-galaxy.github.io/<slug>/`）下，关于学习进度存储前缀的设计，以下哪项最为合理？",
     "options": [
       {
         "key": "A",
-        "text": "在通常场景下，该机制设计能有效规避高并发阻塞，确保操作的高可用性。"
+        "text": "依据 `import.meta.env.BASE_URL` 派生独立命名空间（如 `osg:module-template:`），并禁用全局 `localStorage.clear()`。"
       },
       {
         "key": "B",
-        "text": "该机制主要依赖外部环境变量进行硬编码注入，缺乏高并发条件下的安全锁机制。"
+        "text": "所有 60 个模块统一共享固定前缀 `osg-mt:`，便于跨模块共用同一份进度数据。"
       },
       {
         "key": "C",
-        "text": "在运行态无法进行动态横向伸缩，属于轻量单机调试环境特有的只读过渡方案。"
+        "text": "在 ErrorBoundary 重置状态时直接调用 `localStorage.clear()` 清空整个域名下的全部存储。"
       },
       {
         "key": "D",
-        "text": "这是一种完全淘汰的历史过渡方案，在新版本框架下会导致无法通过静态编译器校验。"
+        "text": "将进度直接写入静态文件 `public/data/module.json` 中持久化保存。"
       }
     ],
     "answer": [
       "A"
     ],
-    "explanation": "关于“模块模板 环境依赖搭建与运行机制”的正确答案为 A。解析：在 模块模板 的设计最佳实践中，该机制不仅对运行时进行了优化，更在多核处理器并发下实现了底层的并发保护机制，属于生产环境下推荐的高性能应用模式。",
+    "explanation": "正确答案是 A。因为所有模块部署在同一源（`openskill-galaxy.github.io`）下的不同子路径，必须依据 `BASE_URL` 派生模块级 `osg:<slug>:` 命名空间，且重置本地状态时只能清理当前模块前缀下的键。",
     "tags": [
-      "模块模板",
-      "基础考点"
+      "入门",
+      "存储"
     ],
-    "difficulty": "medium",
-    "chapter": "course-1",
-    "knowledge_points": [],
-    "estimated_time": 5
+    "difficulty": "easy",
+    "chapter": "mod-template-c-1",
+    "knowledge_points": [
+      "kp-overview",
+      "kp-setup"
+    ],
+    "estimated_time": 3
   },
   {
     "id": "mod-template-q-2",
     "slug": "question-course-1-3",
-    "type": "single",
-    "stem": "在学习 [模块模板] 的过程里，关于“模块模板 配置文件覆盖与属性解析”的核心考点，以下表述最为准确的是？",
+    "type": "multiple",
+    "stem": "基于 `module-template` 创建并发布一个新模块时，以下哪些配置必须与新的 `<slug>` 保持一致？（多选）",
     "options": [
       {
         "key": "A",
-        "text": "在通常场景下，该机制设计能有效规避高并发阻塞，确保操作的高可用性。"
+        "text": "`public/data/module.json` 中的 `slug` 字段"
       },
       {
         "key": "B",
-        "text": "该机制主要依赖外部环境变量进行硬编码注入，缺乏高并发条件下的安全锁机制。"
+        "text": "`vite.config.ts` 中的 `base` 路径（`/<slug>/`）"
       },
       {
         "key": "C",
-        "text": "在运行态无法进行动态横向伸缩，属于轻量单机调试环境特有的只读过渡方案。"
+        "text": "`public/manifest.json` 中的 `start_url` 与 `scope`"
       },
       {
         "key": "D",
-        "text": "这是一种完全淘汰的历史过渡方案，在新版本框架下会导致无法通过静态编译器校验。"
+        "text": "强制要求所有课程 `slug` 必须包含大写字母与下划线"
       }
     ],
     "answer": [
-      "A"
+      "A",
+      "B",
+      "C"
     ],
-    "explanation": "关于“模块模板 配置文件覆盖与属性解析”的正确答案为 A。解析：在 模块模板 的设计最佳实践中，该机制不仅对运行时进行了优化，更在多核处理器并发下实现了底层的并发保护机制，属于生产环境下推荐的高性能应用模式。",
+    "explanation": "正确答案是 A、B、C。`module.json.slug`、`vite.config.ts` 的 `base` 以及 `manifest.json` 的 `start_url`/`scope` 都必须与模块目录名 `/<slug>/` 一致；而 `slug` 规范推荐小写字母、数字和连字符。",
     "tags": [
-      "模块模板",
-      "基础考点"
+      "核心",
+      "数据",
+      "部署"
     ],
     "difficulty": "medium",
-    "chapter": "course-1",
-    "knowledge_points": [],
-    "estimated_time": 5
+    "chapter": "mod-template-c-1",
+    "knowledge_points": [
+      "kp-module",
+      "kp-course"
+    ],
+    "estimated_time": 4
   },
   {
     "id": "mod-template-q-3",
     "slug": "question-course-2-4",
-    "type": "single",
-    "stem": "在学习 [模块模板] 的过程里，关于“模块模板 API 接口规范与数据通信”的核心考点，以下表述最为准确的是？",
+    "type": "judge",
+    "stem": "判断正误：在 GitHub Pages 子路径部署中，使用 `./sw.js` 相对路径注册 Service Worker 在任意深链页面（如 `/lessons/lesson-1-1`）下均能正常解析到模块根目录的 `sw.js`。",
     "options": [
       {
-        "key": "A",
-        "text": "在通常场景下，该机制设计能有效规避高并发阻塞，确保操作的高可用性。"
+        "key": "T",
+        "text": "正确"
       },
       {
-        "key": "B",
-        "text": "该机制主要依赖外部环境变量进行硬编码注入，缺乏高并发条件下的安全锁机制。"
-      },
-      {
-        "key": "C",
-        "text": "在运行态无法进行动态横向伸缩，属于轻量单机调试环境特有的只读过渡方案。"
-      },
-      {
-        "key": "D",
-        "text": "这是一种完全淘汰的历史过渡方案，在新版本框架下会导致无法通过静态编译器校验。"
+        "key": "F",
+        "text": "错误"
       }
     ],
     "answer": [
-      "A"
+      "F"
     ],
-    "explanation": "关于“模块模板 API 接口规范与数据通信”的正确答案为 A。解析：在 模块模板 的设计最佳实践中，该机制不仅对运行时进行了优化，更在多核处理器并发下实现了底层的并发保护机制，属于生产环境下推荐的高性能应用模式。",
+    "explanation": "该表述错误（选 F / 错误）。当 `history.replaceState` 将 URL 还原为 `/<slug>/lessons/lesson-1-1` 后，`./sw.js` 会被浏览器解析为 `/<slug>/lessons/sw.js` 导致 404；必须使用 `%BASE_URL%sw.js` 并显式传入 `{ scope: base }`。",
     "tags": [
-      "模块模板",
-      "基础考点"
+      "核心",
+      "技术"
     ],
-    "difficulty": "medium",
-    "chapter": "course-2",
-    "knowledge_points": [],
-    "estimated_time": 5
+    "difficulty": "easy",
+    "chapter": "mod-template-c-2",
+    "knowledge_points": [
+      "kp-lesson",
+      "kp-principles"
+    ],
+    "estimated_time": 2
   },
   {
     "id": "mod-template-q-4",
     "slug": "question-course-2-5",
     "type": "single",
-    "stem": "在学习 [模块模板] 的过程里，关于“模块模板 核心控制器与数据校验机制”的核心考点，以下表述最为准确的是？",
+    "stem": "关于 OpenSkill 模块中 `slug` 标识符与题目难度权重的约定，下列哪一项说法是正确的？",
     "options": [
       {
         "key": "A",
-        "text": "在通常场景下，该机制设计能有效规避高并发阻塞，确保操作的高可用性。"
+        "text": "Slug 推荐使用小写字母、数字与连字符，不同难度在模拟考中对应 `easy=1`、`medium=2`、`hard=3` 的加权分值。"
       },
       {
         "key": "B",
-        "text": "该机制主要依赖外部环境变量进行硬编码注入，缺乏高并发条件下的安全锁机制。"
+        "text": "Slug 可以为空字符串，系统会自动按数组下标路由。"
       },
       {
         "key": "C",
-        "text": "在运行态无法进行动态横向伸缩，属于轻量单机调试环境特有的只读过渡方案。"
+        "text": "所有难度的题目在模拟考试中权重完全相同，均为 1 分。"
       },
       {
         "key": "D",
-        "text": "这是一种完全淘汰的历史过渡方案，在新版本框架下会导致无法通过静态编译器校验。"
+        "text": "题目的 `knowledge_points` 与 `chapter` 字段可以任意填写不存在的随机文本。"
       }
     ],
     "answer": [
       "A"
     ],
-    "explanation": "关于“模块模板 核心控制器与数据校验机制”的正确答案为 A。解析：在 模块模板 的设计最佳实践中，该机制不仅对运行时进行了优化，更在多核处理器并发下实现了底层的并发保护机制，属于生产环境下推荐的高性能应用模式。",
+    "explanation": "正确答案是 A。规范的 `slug` 由小写字母、数字和连字符构成且不可为空；`scoring.ts` 中的 `questionWeight` 按 `easy=1`、`medium=2`、`hard=3` 计算考试加权总分。",
     "tags": [
-      "模块模板",
-      "基础考点"
+      "设计",
+      "实战"
     ],
     "difficulty": "medium",
-    "chapter": "course-2",
-    "knowledge_points": [],
-    "estimated_time": 5
+    "chapter": "mod-template-c-2",
+    "knowledge_points": [
+      "kp-slug",
+      "kp-difficulty"
+    ],
+    "estimated_time": 4
   },
   {
     "id": "mod-template-q-5",
     "slug": "question-course-3-6",
-    "type": "single",
-    "stem": "在学习 [模块模板] 的过程里，关于“模块模板 缓存优化与垃圾回收调优”的核心考点，以下表述最为准确的是？",
+    "type": "multiple",
+    "stem": "为了提升大型学习模块的运行时性能与同源稳定性，模板采取了以下哪些工程优化措施？（多选）",
     "options": [
       {
         "key": "A",
-        "text": "在通常场景下，该机制设计能有效规避高并发阻塞，确保操作的高可用性。"
+        "text": "通过 `React.lazy` + `Suspense` 对页面路由和大型 Appwrite SDK 弹窗进行按需懒加载"
       },
       {
         "key": "B",
-        "text": "该机制主要依赖外部环境变量进行硬编码注入，缺乏高并发条件下的安全锁机制。"
+        "text": "Service Worker 使用 `self.registration.scope` 派生缓存前缀，仅清理自身旧版本缓存"
       },
       {
         "key": "C",
-        "text": "在运行态无法进行动态横向伸缩，属于轻量单机调试环境特有的只读过渡方案。"
+        "text": "针对 `/data/*.json` 采用 Network-First 策略，确保更新后及时生效"
       },
       {
         "key": "D",
-        "text": "这是一种完全淘汰的历史过渡方案，在新版本框架下会导致无法通过静态编译器校验。"
+        "text": "在每次组件重渲染时同步重新编译全站所有 Markdown 文本"
       }
     ],
     "answer": [
-      "A"
+      "A",
+      "B",
+      "C"
     ],
-    "explanation": "关于“模块模板 缓存优化与垃圾回收调优”的正确答案为 A。解析：在 模块模板 的设计最佳实践中，该机制不仅对运行时进行了优化，更在多核处理器并发下实现了底层的并发保护机制，属于生产环境下推荐的高性能应用模式。",
+    "explanation": "正确答案是 A、B、C。懒加载减小首屏包体积，按作用域隔离 SW 缓存可避免误删总站或兄弟模块缓存，`/data/*.json` 采用 Network-First 保障数据及时更新。",
     "tags": [
-      "模块模板",
-      "基础考点"
+      "进阶",
+      "性能"
     ],
-    "difficulty": "medium",
-    "chapter": "course-3",
-    "knowledge_points": [],
+    "difficulty": "hard",
+    "chapter": "mod-template-c-3",
+    "knowledge_points": [
+      "kp-patterns",
+      "kp-performance"
+    ],
     "estimated_time": 5
   },
   {
     "id": "mod-template-q-6",
     "slug": "question-course-3-7",
-    "type": "single",
-    "stem": "在学习 [模块模板] 的过程里，关于“模块模板 可观测性日志与分布式链路监控”的核心考点，以下表述最为准确的是？",
-    "options": [
-      {
-        "key": "A",
-        "text": "在通常场景下，该机制设计能有效规避高并发阻塞，确保操作的高可用性。"
-      },
-      {
-        "key": "B",
-        "text": "该机制主要依赖外部环境变量进行硬编码注入，缺乏高并发条件下的安全锁机制。"
-      },
-      {
-        "key": "C",
-        "text": "在运行态无法进行动态横向伸缩，属于轻量单机调试环境特有的只读过渡方案。"
-      },
-      {
-        "key": "D",
-        "text": "这是一种完全淘汰的历史过渡方案，在新版本框架下会导致无法通过静态编译器校验。"
-      }
-    ],
+    "type": "short",
+    "stem": "简答题：模块模板中的哪一份核心配置文件用于声明模块的 `id`、`slug`、`title` 以及各资源统计数（`stats`），从而被总站与校验脚本识别？",
+    "options": [],
     "answer": [
-      "A"
+      "module.json",
+      "public/data/module.json"
     ],
-    "explanation": "关于“模块模板 可观测性日志与分布式链路监控”的正确答案为 A。解析：在 模块模板 的设计最佳实践中，该机制不仅对运行时进行了优化，更在多核处理器并发下实现了底层的并发保护机制，属于生产环境下推荐的高性能应用模式。",
+    "explanation": "正确答案是 `module.json`（或 `public/data/module.json`）。校验脚本 `validate-module.mjs` 与总站索引聚合脚本都会读取 `public/data/module.json` 校验元数据与 `stats` 一致性。",
     "tags": [
-      "模块模板",
-      "基础考点"
+      "部署",
+      "数据"
     ],
     "difficulty": "medium",
-    "chapter": "course-3",
-    "knowledge_points": [],
-    "estimated_time": 5
+    "chapter": "mod-template-c-3",
+    "knowledge_points": [
+      "kp-integration"
+    ],
+    "estimated_time": 4
   }
 ]

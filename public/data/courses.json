@@ -12,8 +12,8 @@
       "mod-template-l-2"
     ],
     "tags": [
-      "模板",
-      "演示"
+      "入门",
+      "核心"
     ]
   },
   {
@@ -22,15 +22,16 @@
     "slug": "course-2",
     "summary": "掌握 模块模板 的核心组件、API 接口调用以及本地开发调试。",
     "order": 2,
-    "difficulty": "easy",
+    "difficulty": "medium",
     "estimatedHours": 7,
     "lessons": [
       "mod-template-l-3",
       "mod-template-l-4"
     ],
     "tags": [
-      "模板",
-      "演示"
+      "数据",
+      "设计",
+      "实战"
     ]
   },
   {
@@ -39,15 +40,16 @@
     "slug": "course-3",
     "summary": "学习如何进行系统性能监控调优、高可用集群部署与数据存储。",
     "order": 3,
-    "difficulty": "easy",
-    "estimatedHours": 7,
+    "difficulty": "hard",
+    "estimatedHours": 6,
     "lessons": [
       "mod-template-l-5",
       "mod-template-l-6"
     ],
     "tags": [
-      "模板",
-      "演示"
+      "进阶",
+      "性能",
+      "部署"
     ]
   }
 ]

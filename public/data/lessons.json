@@ -6,8 +6,8 @@
     "title": "模块模板 环境依赖搭建与运行机制",
     "slug": "lesson-1-1",
     "summary": "了解平台运行依赖、环境参数配置以及本地运行引导流程。",
-    "contentMarkdown": "# 模块模板 环境依赖搭建与运行机制\n          \n## 1. 概述与背景\n在进行 `模块模板` 的开发实践中，`模块模板 环境依赖搭建与运行机制` 扮演着非常关键的底层支柱角色。本章节将重点解构其核心运行逻辑。\n\n> [!NOTE]\n> 实践本章前，请确保您的本地运行时版本满足模块要求的最新 LTS 标准。\n\n## 2. 核心原理与拓扑图\n其运作逻辑可以用以下三个层级来描述：\n1. **输入解析层**：捕获客户端请求参数，进行类型预校验。\n2. **处理调度层**：基于核心哈希分配算法定位工作节点，防范并发冲突。\n3. **输出回调层**：完成结果状态原子提交，清空缓存生命周期。\n\n## 3. 代码演练与实战演示\n以下是用于处理该模块逻辑的核心配置或执行程序：\n\n```javascript\n// 模块模板 生产实践示例\nconsole.log(\"Initializing 模块模板 engine...\");\nconst stats = runDiagnosis();\nconsole.log(`Diagnosis completed: ${JSON.stringify(stats)}\\n`);\n```\n\n## 4. 最佳实践避坑指南\n- 务必避免在高并发主循环中进行同步 IO 操作，容易导致 CPU 级死锁。\n- 始终为临时运行缓存设置合理的最大生命周期过期限制（TTL），防止内存泄露。\n",
-    "knowledgePoints": [],
+    "contentMarkdown": "# 模块模板 环境依赖搭建与运行机制\n\n## 1. 概述与背景\n在进行 `模块模板` 的开发实践中，`环境依赖搭建与运行机制` 扮演着底层支柱角色。所有模块均基于 Vite + React + TypeScript 静态架构构建，构建产物可直接部署至 GitHub Pages。\n\n> [!NOTE]\n> 实践本章前，请确保您的本地 Node.js 版本满足最新 LTS 标准（Node 20+ / 22）。\n\n## 2. 核心原理与拓扑图\n其运作逻辑可以用以下三个层级来描述：\n1. **静态资源层**：通过 `public/data/*.json` 承载课程、讲义、知识点与题库。\n2. **状态隔离层**：基于 `import.meta.env.BASE_URL` 派生 `osg:<slug>:` 命名空间，隔离同源下的多模块进度。\n3. **渲染交互层**：React Router + Zustand 驱动无刷新学习、即时判分与离线缓存。\n\n## 3. 代码演练与实战演示\n以下自包含示例演示如何从模块 `BASE_URL` 派生隔离存储前缀并执行环境自检：\n\n```javascript\nfunction buildStoragePrefix(baseUrl) {\n  const clean = (baseUrl || \"/\").replace(/^\\/+|\\/+$/g, \"\");\n  const slug = clean ? clean.split(\"/\").filter(Boolean).pop() : \"root\";\n  return `osg:${slug}:`;\n}\n\nconst envReport = {\n  baseUrl: \"/module-template/\",\n  storagePrefix: buildStoragePrefix(\"/module-template/\"),\n  portalPrefix: buildStoragePrefix(\"/\"),\n  status: \"ready\"\n};\nconsole.log(\"Environment Check:\", envReport);\n```\n\n## 4. 最佳实践避坑指南\n- 务必为每个模块单独配置 `vite.config.ts` 的 `base` 与 `public/manifest.json` 的 `start_url`/`scope`。\n- 禁止直接调用 `localStorage.clear()`，避免误清同源下其它模块的用户学习记录。\n",
+    "knowledgePoints": ["kp-overview", "kp-setup"],
     "estimatedMinutes": 20
   },
   {
@@ -16,9 +16,9 @@
     "order": 2,
     "title": "模块模板 配置文件覆盖与属性解析",
     "slug": "lesson-1-2",
-    "summary": "学习多环境配置管理，利用环境变量覆盖规则进行定制开发。",
-    "contentMarkdown": "# 模块模板 配置文件覆盖与属性解析\n          \n## 1. 概述与背景\n在进行 `模块模板` 的开发实践中，`模块模板 配置文件覆盖与属性解析` 扮演着非常关键的底层支柱角色。本章节将重点解构其核心运行逻辑。\n\n> [!NOTE]\n> 实践本章前，请确保您的本地运行时版本满足模块要求的最新 LTS 标准。\n\n## 2. 核心原理与拓扑图\n其运作逻辑可以用以下三个层级来描述：\n1. **输入解析层**：捕获客户端请求参数，进行类型预校验。\n2. **处理调度层**：基于核心哈希分配算法定位工作节点，防范并发冲突。\n3. **输出回调层**：完成结果状态原子提交，清空缓存生命周期。\n\n## 3. 代码演练与实战演示\n以下是用于处理该模块逻辑的核心配置或执行程序：\n\n```javascript\n// 模块模板 生产实践示例\nconsole.log(\"Initializing 模块模板 engine...\");\nconst stats = runDiagnosis();\nconsole.log(`Diagnosis completed: ${JSON.stringify(stats)}\\n`);\n```\n\n## 4. 最佳实践避坑指南\n- 务必避免在高并发主循环中进行同步 IO 操作，容易导致 CPU 级死锁。\n- 始终为临时运行缓存设置合理的最大生命周期过期限制（TTL），防止内存泄露。\n",
-    "knowledgePoints": [],
+    "summary": "学习多环境配置管理，利用元数据与数据模型规范进行定制开发。",
+    "contentMarkdown": "# 模块模板 配置文件覆盖与属性解析\n\n## 1. 概述与背景\n`module.json`、`courses.json` 与 `lessons.json` 共同定义了学习模块的骨架与内容拓扑。理解各配置字段的覆盖优先级，有助于快速定制独立课程站点。\n\n> [!TIP]\n> 在发布新模块前，可使用 `validate-module.mjs` 一次性校验元数据、Schema 与跨文件引用。\n\n## 2. 核心配置层级\n1. **模块元信息 (`module.json`)**：声明 `id`、`slug`、`title`、`version` 与 `stats` 统计。\n2. **课程编排 (`courses.json`)**：通过 `lessons` 数组指定讲义先后顺序。\n3. **讲义正文 (`lessons.json`)**：通过 `knowledgePoints` 关联原子知识点，形成交叉引用网络。\n\n## 3. 代码演练与实战演示\n以下示例演示如何合并默认模块配置与自定义覆盖项，并校验 `stats` 一致性：\n\n```javascript\nconst defaultConfig = { version: \"1.0.0\", difficulty: \"easy\", license: \"MIT\" };\nconst moduleOverride = { slug: \"module-template\", title: \"模块模板\", stats: { courses: 3, lessons: 6 } };\n\nconst merged = { ...defaultConfig, ...moduleOverride };\nconsole.log(\"Merged Module Config:\", merged);\n```\n\n## 4. 最佳实践避坑指南\n- `module.json` 的 `slug` 必须与仓库目录名及 `vite.config.ts` 的 `base` 保持一致。\n- 增删课程或题目后，务必同步更新 `module.json.stats` 与 `search-index.json`。\n",
+    "knowledgePoints": ["kp-module", "kp-course", "kp-lesson"],
     "estimatedMinutes": 20
   },
   {
@@ -27,9 +27,9 @@
     "order": 1,
     "title": "模块模板 API 接口规范与数据通信",
     "slug": "lesson-2-1",
-    "summary": "掌握高性能交互接口设计，实现模块间高效、轻量的数据传输。",
-    "contentMarkdown": "# 模块模板 API 接口规范与数据通信\n          \n## 1. 概述与背景\n在进行 `模块模板` 的开发实践中，`模块模板 API 接口规范与数据通信` 扮演着非常关键的底层支柱角色。本章节将重点解构其核心运行逻辑。\n\n> [!NOTE]\n> 实践本章前，请确保您的本地运行时版本满足模块要求的最新 LTS 标准。\n\n## 2. 核心原理与拓扑图\n其运作逻辑可以用以下三个层级来描述：\n1. **输入解析层**：捕获客户端请求参数，进行类型预校验。\n2. **处理调度层**：基于核心哈希分配算法定位工作节点，防范并发冲突。\n3. **输出回调层**：完成结果状态原子提交，清空缓存生命周期。\n\n## 3. 代码演练与实战演示\n以下是用于处理该模块逻辑的核心配置或执行程序：\n\n```javascript\n// 模块模板 生产实践示例\nconsole.log(\"Initializing 模块模板 engine...\");\nconst stats = runDiagnosis();\nconsole.log(`Diagnosis completed: ${JSON.stringify(stats)}\\n`);\n```\n\n## 4. 最佳实践避坑指南\n- 务必避免在高并发主循环中进行同步 IO 操作，容易导致 CPU 级死锁。\n- 始终为临时运行缓存设置合理的最大生命周期过期限制（TTL），防止内存泄露。\n",
-    "knowledgePoints": [],
+    "summary": "掌握静态数据加载规范与深链路由通信协议，实现总站与模块的无缝联动。",
+    "contentMarkdown": "# 模块模板 API 接口规范与数据通信\n\n## 1. 概述与背景\n在静态架构下，模块通过 `fetch(`${BASE}data/*.json`)` 并行拉取 11 份结构化数据，并通过 `?page=` 参数与总站 `openskill-galaxy.github.io` 进行深链路由通信。\n\n> [!IMPORTANT]\n> GitHub Pages 子路径部署时，务必通过 `404.html` 与 `<head>` 预挂载还原脚本共同保障深链刷新不丢失。\n\n## 2. 通信协议要点\n1. **并行加载**：`loadAll()` 通过 `Promise.all` 并发请求各 JSON 文件，缩短首屏等待。\n2. **深链协议**：支持总站传入 `?page=%2Flessons%2Flesson-1-1` 以及 `404.html` 生成的 `~and~` 参数。\n3. **Slug 规范**：所有可路由资源使用小写字母、数字和连字符组成的 URL 友好 `slug`。\n\n## 3. 代码演练与实战演示\n以下示例模拟解析深链 `?page=` 与 `~and~` 查询参数，并生成最终路由地址：\n\n```javascript\nfunction resolveDeepLink(base, search) {\n  const parts = search.replace(/^\\?/, \"\").split(\"&\");\n  let rawPage = null;\n  const rest = [];\n  for (const part of parts) {\n    if (part.startsWith(\"page=\") && rawPage === null) rawPage = part.slice(5);\n    else if (part) rest.push(part.replace(/~and~/g, \"&\"));\n  }\n  if (!rawPage) return base;\n  const page = decodeURIComponent(rawPage).replace(/~and~/g, \"&\").replace(/^\\/+/, \"\");\n  return base + page + (rest.length ? \"?\" + rest.join(\"&\") : \"\");\n}\n\nconsole.log(\"Portal link:\", resolveDeepLink(\"/module-template/\", \"?page=%2Flessons%2Flesson-1-1\"));\nconsole.log(\"404 redirect:\", resolveDeepLink(\"/module-template/\", \"?page=search&q=模板~and~from=404\"));\n```\n\n## 4. 最佳实践避坑指南\n- 切勿使用 `URLSearchParams.toString()` 还原 `~and~`，因为 `~` 会被编码为 `%7E`。\n- 注册 Service Worker 时应显式传入 `{ scope: base }`，避免相对路径 `./sw.js` 在深链下 404。\n",
+    "knowledgePoints": ["kp-principles", "kp-slug"],
     "estimatedMinutes": 20
   },
   {
@@ -38,9 +38,9 @@
     "order": 2,
     "title": "模块模板 核心控制器与数据校验机制",
     "slug": "lesson-2-2",
-    "summary": "掌握核心控制器的异常处理、拦截器配置与入参格式合法性检查。",
-    "contentMarkdown": "# 模块模板 核心控制器与数据校验机制\n          \n## 1. 概述与背景\n在进行 `模块模板` 的开发实践中，`模块模板 核心控制器与数据校验机制` 扮演着非常关键的底层支柱角色。本章节将重点解构其核心运行逻辑。\n\n> [!NOTE]\n> 实践本章前，请确保您的本地运行时版本满足模块要求的最新 LTS 标准。\n\n## 2. 核心原理与拓扑图\n其运作逻辑可以用以下三个层级来描述：\n1. **输入解析层**：捕获客户端请求参数，进行类型预校验。\n2. **处理调度层**：基于核心哈希分配算法定位工作节点，防范并发冲突。\n3. **输出回调层**：完成结果状态原子提交，清空缓存生命周期。\n\n## 3. 代码演练与实战演示\n以下是用于处理该模块逻辑的核心配置或执行程序：\n\n```javascript\n// 模块模板 生产实践示例\nconsole.log(\"Initializing 模块模板 engine...\");\nconst stats = runDiagnosis();\nconsole.log(`Diagnosis completed: ${JSON.stringify(stats)}\\n`);\n```\n\n## 4. 最佳实践避坑指南\n- 务必避免在高并发主循环中进行同步 IO 操作，容易导致 CPU 级死锁。\n- 始终为临时运行缓存设置合理的最大生命周期过期限制（TTL），防止内存泄露。\n",
-    "knowledgePoints": [],
+    "summary": "掌握题型评分控制流、难度分级体系与 SM-2 错题记忆调度算法。",
+    "contentMarkdown": "# 模块模板 核心控制器与数据校验机制\n\n## 1. 概述与背景\n模块评测引擎由 `scoring.ts` 与 `srs.ts` 驱动，支持单选、多选、判断、简答、填空、计算与案例分析等题型，并按 `easy / medium / hard` 三级难度加权计分。\n\n> [!NOTE]\n> 错题本内置 SM-2 间隔重复调度算法，连续答对 3 次后自动移出错题本。\n\n## 2. 校验与计分流程\n1. **答案标准化**：多选题忽略选项顺序；文本题支持 `|` 分隔的多候选答案与大小写无关比对。\n2. **权重计算**：`easy=1`、`medium=2`、`hard=3`，按得分权重占比输出 `0-100` 总分。\n3. **薄弱点诊断**：依据错题关联的 `knowledge_points` 统计薄弱知识点并推荐复习讲义。\n\n## 3. 代码演练与实战演示\n以下示例演示按难度加权计算模拟考试得分的完整函数：\n\n```javascript\nconst weights = { easy: 1, medium: 2, hard: 3 };\nconst results = [\n  { id: \"q1\", difficulty: \"easy\", correct: true },\n  { id: \"q2\", difficulty: \"medium\", correct: true },\n  { id: \"q3\", difficulty: \"hard\", correct: false }\n];\n\nconst total = results.reduce((s, r) => s + weights[r.difficulty], 0);\nconst got = results.reduce((s, r) => s + (r.correct ? weights[r.difficulty] : 0), 0);\nconsole.log({ got, total, score: Math.round((got / total) * 100) });\n```\n\n## 4. 最佳实践避坑指南\n- 在配置题目数据时，务必为每道题填充有效的 `knowledge_points` ID 列表。\n- 判断题答案请统一使用 `[\"T\"]` 或 `[\"F\"]`，以兼容键盘快捷键与答题卡判分。\n",
+    "knowledgePoints": ["kp-difficulty", "kp-patterns"],
     "estimatedMinutes": 20
   },
   {
@@ -49,9 +49,9 @@
     "order": 1,
     "title": "模块模板 缓存优化与垃圾回收调优",
     "slug": "lesson-3-1",
-    "summary": "定位运行时的内存与缓存瓶颈，学习垃圾回收算法调优实践。",
-    "contentMarkdown": "# 模块模板 缓存优化与垃圾回收调优\n          \n## 1. 概述与背景\n在进行 `模块模板` 的开发实践中，`模块模板 缓存优化与垃圾回收调优` 扮演着非常关键的底层支柱角色。本章节将重点解构其核心运行逻辑。\n\n> [!NOTE]\n> 实践本章前，请确保您的本地运行时版本满足模块要求的最新 LTS 标准。\n\n## 2. 核心原理与拓扑图\n其运作逻辑可以用以下三个层级来描述：\n1. **输入解析层**：捕获客户端请求参数，进行类型预校验。\n2. **处理调度层**：基于核心哈希分配算法定位工作节点，防范并发冲突。\n3. **输出回调层**：完成结果状态原子提交，清空缓存生命周期。\n\n## 3. 代码演练与实战演示\n以下是用于处理该模块逻辑的核心配置或执行程序：\n\n```javascript\n// 模块模板 生产实践示例\nconsole.log(\"Initializing 模块模板 engine...\");\nconst stats = runDiagnosis();\nconsole.log(`Diagnosis completed: ${JSON.stringify(stats)}\\n`);\n```\n\n## 4. 最佳实践避坑指南\n- 务必避免在高并发主循环中进行同步 IO 操作，容易导致 CPU 级死锁。\n- 始终为临时运行缓存设置合理的最大生命周期过期限制（TTL），防止内存泄露。\n",
-    "knowledgePoints": [],
+    "summary": "定位运行时的按需加载与 Service Worker 缓存策略，避免同源缓存冲突。",
+    "contentMarkdown": "# 模块模板 缓存优化与垃圾回收调优\n\n## 1. 概述与背景\n随着模块内容增长，首屏体积与离线缓存隔离变得尤为重要。模板通过路由级 `React.lazy` 分割、重型 SDK 懒加载以及基于作用域隔离的 Service Worker 缓存策略来保持轻量流畅。\n\n> [!WARNING]\n> 同一域名下的多个模块共享 Origin；Service Worker 激活清理旧缓存时，绝对不能删除其它模块或总站的缓存。\n\n## 2. 优化策略清单\n1. **路由代码分割**：20 个页面路由均按需异步加载，首屏只下载核心框架与当前页。\n2. **重型弹窗懒加载**：如 `AppwriteModal` 等依赖大型 SDK 的组件使用 `React.lazy` 按需加载。\n3. **SW 作用域缓存隔离**：以 `self.registration.scope` 派生 `CACHE_PREFIX`，仅清理本模块历史版本缓存。\n\n## 3. 代码演练与实战演示\n以下示例演示带有 TTL 过期淘汰策略的轻量内存缓存实现：\n\n```javascript\nfunction createTTLCache(ttlMs) {\n  const store = new Map();\n  return {\n    set(key, val) { store.set(key, { val, expires: Date.now() + ttlMs }); },\n    get(key) {\n      const entry = store.get(key);\n      if (!entry || Date.now() > entry.expires) { store.delete(key); return null; }\n      return entry.val;\n    }\n  };\n}\n\nconst cache = createTTLCache(5000);\ncache.set(\"search-index\", { entries: 47 });\nconsole.log(\"Cache hit:\", cache.get(\"search-index\"));\n```\n\n## 4. 最佳实践避坑指南\n- JSON 数据请求（`/data/*.json`）应使用 Network-First 策略，确保更新后用户能第一时间看到新题库。\n- 每次升级模板静态资源时，应递增 SW 缓存版本号并向用户展示可关闭的刷新提示。\n",
+    "knowledgePoints": ["kp-performance"],
     "estimatedMinutes": 20
   },
   {
@@ -60,9 +60,9 @@
     "order": 2,
     "title": "模块模板 可观测性日志与分布式链路监控",
     "slug": "lesson-3-2",
-    "summary": "配置全局日志收集管道，分析高负载服务下的运行指标波动。",
-    "contentMarkdown": "# 模块模板 可观测性日志与分布式链路监控\n          \n## 1. 概述与背景\n在进行 `模块模板` 的开发实践中，`模块模板 可观测性日志与分布式链路监控` 扮演着非常关键的底层支柱角色。本章节将重点解构其核心运行逻辑。\n\n> [!NOTE]\n> 实践本章前，请确保您的本地运行时版本满足模块要求的最新 LTS 标准。\n\n## 2. 核心原理与拓扑图\n其运作逻辑可以用以下三个层级来描述：\n1. **输入解析层**：捕获客户端请求参数，进行类型预校验。\n2. **处理调度层**：基于核心哈希分配算法定位工作节点，防范并发冲突。\n3. **输出回调层**：完成结果状态原子提交，清空缓存生命周期。\n\n## 3. 代码演练与实战演示\n以下是用于处理该模块逻辑的核心配置或执行程序：\n\n```javascript\n// 模块模板 生产实践示例\nconsole.log(\"Initializing 模块模板 engine...\");\nconst stats = runDiagnosis();\nconsole.log(`Diagnosis completed: ${JSON.stringify(stats)}\\n`);\n```\n\n## 4. 最佳实践避坑指南\n- 务必避免在高并发主循环中进行同步 IO 操作，容易导致 CPU 级死锁。\n- 始终为临时运行缓存设置合理的最大生命周期过期限制（TTL），防止内存泄露。\n",
-    "knowledgePoints": [],
+    "summary": "理解模块与总站集成时的健康度校验、全局索引构建与构建流水线监控。",
+    "contentMarkdown": "# 模块模板 可观测性日志与分布式链路监控\n\n## 1. 概述与背景\nOpenSkill Galaxy 拥有 60 个独立仓库与 1 个总入口站，需要通过标准化的自动化校验与索引聚合机制保证全站可观测性与发布质量。\n\n> [!TIP]\n> 在提交 PR 或发布前，使用 `openskill-galaxy-tools` 对模块进行 Schema、引用完整性与构建检查。\n\n## 2. 生态集成链路\n1. **单模块校验 (`validate-module.mjs`)**：验证 `module.json`、10 份核心 JSON、PWA 配置及题库规范。\n2. **全局索引聚合 (`build-global-index.mjs`)**：抽取各模块课程与题目，汇总到总站的全局搜索框。\n3. **健康度报告 (`build-health-report.mjs`)**：生成全站健康度快照，追踪缺失引用、重名 Slug 与构建状态。\n\n## 3. 代码演练与实战演示\n以下示例演示生成结构化可观测性检查事件，便于在构建阶段汇总模块健康指标：\n\n```javascript\nfunction emitHealthMetric(moduleSlug, stats) {\n  return {\n    timestamp: new Date().toISOString(),\n    module: moduleSlug,\n    checks: { schema: \"pass\", references: \"pass\", build: \"pass\" },\n    stats\n  };\n}\n\nconst report = emitHealthMetric(\"module-template\", { courses: 3, lessons: 6, questions: 6 });\nconsole.log(\"Health Metric:\", report);\n```\n\n## 4. 最佳实践避坑指南\n- 保持 GitHub Actions 使用 Node 22 与 `npm run build`（`tsc -b && vite build`）严格类型检查。\n- 请勿在仓库中保留构建产物或临时校验脚本输出，确保仓库干净可发布。\n",
+    "knowledgePoints": ["kp-integration"],
     "estimatedMinutes": 20
   }
 ]

@@ -4,13 +4,16 @@
     "slug": "module-overview",
     "title": "模块概览",
     "summary": "模块的整体结构、功能范围与定位。",
+    "courseId": "mod-template-c-1",
     "tags": [
-      "概览",
-      "模板"
+      "入门",
+      "核心"
     ],
     "difficulty": "easy",
     "contentMarkdown": "## 模块概览\n\n一个 OpenSkill Galaxy 模块包含以下核心部分：\n\n- **课程与讲义**：结构化学习内容\n- **知识点库**：原子化知识单元\n- **题库与考试**：练习与评估\n- **案例训练**：实战场景\n- **学习路线**：推荐学习顺序\n- **FAQ 与术语**：辅助参考\n\n所有数据存储在 `public/data/*.json`，前端直接读取，无需后端。",
-    "relatedQuestions": [],
+    "relatedQuestions": [
+      "mod-template-q-1"
+    ],
     "relatedCases": [
       "case-hello"
     ],
@@ -24,14 +27,20 @@
     "slug": "environment-setup",
     "title": "环境搭建",
     "summary": "本地开发环境的搭建步骤与验证方法。",
+    "courseId": "mod-template-c-1",
     "tags": [
-      "环境",
-      "工具"
+      "入门",
+      "技术",
+      "存储"
     ],
     "difficulty": "easy",
-    "contentMarkdown": "## 环境搭建\n\n需要 Node.js 18+、npm 9+ 和 Git。\n\n```bash\ngit clone <repo>\ncd module-template\nnpm install\nnpm run dev\n```\n\n打开浏览器访问开发服务器地址即可。",
-    "relatedQuestions": [],
-    "relatedCases": [],
+    "contentMarkdown": "## 环境搭建\n\n需要 Node.js 20+（推荐 22）、npm 9+ 和 Git。\n\n```bash\ngit clone <repo>\ncd module-template\nnpm install\nnpm run dev\n```\n\n打开浏览器访问开发服务器地址即可。",
+    "relatedQuestions": [
+      "mod-template-q-1"
+    ],
+    "relatedCases": [
+      "case-hello"
+    ],
     "glossary": [
       "g-node"
     ]
@@ -41,14 +50,20 @@
     "slug": "module-data-model",
     "title": "Module 数据模型",
     "summary": "模块元数据的 JSON 结构与字段说明。",
+    "courseId": "mod-template-c-1",
     "tags": [
-      "数据",
-      "模型"
+      "核心",
+      "数据"
     ],
     "difficulty": "medium",
-    "contentMarkdown": "## Module 数据模型\n\n`module.json` 包含模块的元数据：\n\n- `id` / `slug`：唯一标识\n- `title` / `subtitle` / `description`：展示信息\n- `version` / `license` / `authors`：版本与版权\n- `tags` / `difficulty` / `estimatedHours`：分类与时长\n- `repoUrl` / `portalUrl`：外部链接",
-    "relatedQuestions": [],
-    "relatedCases": [],
+    "contentMarkdown": "## Module 数据模型\n\n`module.json` 包含模块的元数据：\n\n- `id` / `slug`：唯一标识\n- `title` / `subtitle` / `description`：展示信息\n- `version` / `license` / `authors`：版本与版权\n- `tags` / `difficulty` / `estimatedHours`：分类与时长\n- `stats`：各 JSON 数组条目数量统计\n- `repoUrl` / `portalUrl`：外部链接",
+    "relatedQuestions": [
+      "mod-template-q-2"
+    ],
+    "relatedCases": [
+      "case-hello",
+      "case-custom-question"
+    ],
     "glossary": [
       "g-module"
     ]
@@ -58,13 +73,16 @@
     "slug": "course-data-model",
     "title": "Course 数据模型",
     "summary": "课程的 JSON 结构，包含讲义列表与排序。",
+    "courseId": "mod-template-c-1",
     "tags": [
       "数据",
-      "课程"
+      "设计"
     ],
     "difficulty": "medium",
     "contentMarkdown": "## Course 数据模型\n\n课程通过 `lessons` 数组引用讲义 ID，`order` 字段控制课程在列表中的显示顺序。\n\n讲义在课程内按数组顺序排列，同时自身也有 `order` 字段。",
-    "relatedQuestions": [],
+    "relatedQuestions": [
+      "mod-template-q-2"
+    ],
     "relatedCases": [],
     "glossary": [
       "g-course"
@@ -75,13 +93,16 @@
     "slug": "lesson-data-model",
     "title": "Lesson 数据模型",
     "summary": "讲义的 JSON 结构，包含 Markdown 内容与知识点关联。",
+    "courseId": "mod-template-c-1",
     "tags": [
       "数据",
-      "讲义"
+      "实战"
     ],
     "difficulty": "medium",
     "contentMarkdown": "## Lesson 数据模型\n\n讲义的核心字段：\n\n- `contentMarkdown`：正文内容\n- `knowledgePoints`：关联知识点 ID 列表\n- `courseId`：所属课程\n- `estimatedMinutes`：预计阅读时长",
-    "relatedQuestions": [],
+    "relatedQuestions": [
+      "mod-template-q-3"
+    ],
     "relatedCases": [],
     "glossary": [
       "g-lesson"
@@ -92,13 +113,16 @@
     "slug": "design-principles",
     "title": "设计原则",
     "summary": "静态优先、离线可用、可复用等核心设计原则。",
+    "courseId": "mod-template-c-2",
     "tags": [
-      "原则",
+      "核心",
       "设计"
     ],
     "difficulty": "easy",
     "contentMarkdown": "## 设计原则\n\n1. 静态优先\n2. 离线可用\n3. 可复用\n4. 可搜索\n5. 渐进增强",
-    "relatedQuestions": [],
+    "relatedQuestions": [
+      "mod-template-q-3"
+    ],
     "relatedCases": [],
     "glossary": []
   },
@@ -107,13 +131,16 @@
     "slug": "slug-identifier",
     "title": "Slug 标识符",
     "summary": "URL 友好的唯一标识符约定。",
+    "courseId": "mod-template-c-2",
     "tags": [
-      "约定",
-      "标识"
+      "设计",
+      "技术"
     ],
     "difficulty": "easy",
     "contentMarkdown": "## Slug\n\nSlug 是小写字母、数字和连字符组成的 URL 友好标识符。\n\n示例：`basic-concepts`、`module-template`",
-    "relatedQuestions": [],
+    "relatedQuestions": [
+      "mod-template-q-4"
+    ],
     "relatedCases": [],
     "glossary": [
       "g-slug"
@@ -124,13 +151,16 @@
     "slug": "difficulty-levels",
     "title": "难度等级",
     "summary": "easy / medium / hard 三级难度体系。",
+    "courseId": "mod-template-c-2",
     "tags": [
-      "难度",
-      "分类"
+      "数据",
+      "进阶"
     ],
     "difficulty": "easy",
     "contentMarkdown": "## 难度等级\n\n- **easy**（简单）：入门级，无需前置知识\n- **medium**（中等）：需要基础，有一定挑战\n- **hard**（困难）：综合运用，需要深入理解",
-    "relatedQuestions": [],
+    "relatedQuestions": [
+      "mod-template-q-4"
+    ],
     "relatedCases": [],
     "glossary": [
       "g-difficulty"
@@ -141,15 +171,20 @@
     "slug": "common-patterns",
     "title": "常见模式",
     "summary": "线性、分支、交叉引用、渐进难度等数据组织模式。",
+    "courseId": "mod-template-c-2",
     "tags": [
-      "模式",
-      "组织"
+      "设计",
+      "进阶",
+      "实战"
     ],
     "difficulty": "hard",
     "contentMarkdown": "## 常见模式\n\n- 线性课程\n- 分支课程\n- 交叉引用\n- 渐进难度",
-    "relatedQuestions": [],
+    "relatedQuestions": [
+      "mod-template-q-5"
+    ],
     "relatedCases": [
-      "case-hello"
+      "case-hello",
+      "case-custom-question"
     ],
     "glossary": []
   },
@@ -158,13 +193,17 @@
     "slug": "performance-optimization",
     "title": "性能优化",
     "summary": "大数据量模块的懒加载、分页与缓存策略。",
+    "courseId": "mod-template-c-3",
     "tags": [
       "性能",
-      "优化"
+      "进阶",
+      "技术"
     ],
     "difficulty": "hard",
-    "contentMarkdown": "## 性能优化\n\n- 搜索索引懒加载\n- 分页与虚拟滚动\n- JSON 体积控制\n- 缓存策略",
-    "relatedQuestions": [],
+    "contentMarkdown": "## 性能优化\n\n- 搜索索引懒加载\n- 路由级代码分割与 SDK 按需加载\n- JSON 体积控制\n- 按作用域隔离的 Service Worker 缓存策略",
+    "relatedQuestions": [
+      "mod-template-q-5"
+    ],
     "relatedCases": [],
     "glossary": []
   },
@@ -173,13 +212,16 @@
     "slug": "portal-integration",
     "title": "总入口站集成",
     "summary": "模块与总入口站的注册与链接约定。",
+    "courseId": "mod-template-c-3",
     "tags": [
-      "集成",
-      "部署"
+      "部署",
+      "核心"
     ],
     "difficulty": "medium",
-    "contentMarkdown": "## 总入口站集成\n\n模块部署后在总入口站的 `modules.json` 中注册，即可被搜索和导航。",
-    "relatedQuestions": [],
+    "contentMarkdown": "## 总入口站集成\n\n模块部署后在总入口站的 `modules.json` 中注册，并通过 `?page=` 深链协议与主站搜索、学习路径无缝跳转。",
+    "relatedQuestions": [
+      "mod-template-q-6"
+    ],
     "relatedCases": [],
     "glossary": []
   }
